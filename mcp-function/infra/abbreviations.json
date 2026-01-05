@@ -1,0 +1,16 @@
+{
+  "analyticWorkspaces": "log-",
+  "appContainerApps": "ca-",
+  "appManagedEnvironments": "cae-",
+  "cognitiveServicesAccounts": "cog-",
+  "containerRegistryRegistries": "cr",
+  "insightsComponents": "appi-",
+  "keyVaultVaults": "kv-",
+  "managedIdentityUserAssignedIdentities": "id-",
+  "operationalInsightsWorkspaces": "log-",
+  "resourcesResourceGroups": "rg-",
+  "searchSearchServices": "srch-",
+  "storageStorageAccounts": "st",
+  "webServerFarms": "plan-",
+  "webSitesFunctions": "func-"
+}

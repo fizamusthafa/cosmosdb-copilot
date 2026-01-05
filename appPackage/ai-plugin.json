@@ -1,0 +1,143 @@
+{
+  "$schema": "https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "CosmosDB MCP Server",
+  "description_for_human": "Query and manage CosmosDB databases, containers, and items using natural language.",
+  "contact_email": "publisher-email@example.com",
+  "namespace": "cosmosdbcopilot",
+  "functions": [
+    {
+      "name": "list_databases",
+      "description": "List all databases in the CosmosDB account."
+    },
+    {
+      "name": "list_containers",
+      "description": "List all containers in a specific CosmosDB database.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "database_name": {
+            "type": "string",
+            "description": "The name of the database to list containers from."
+          }
+        },
+        "required": ["database_name"]
+      }
+    },
+    {
+      "name": "query_items",
+      "description": "Execute a SQL query against a CosmosDB container to retrieve items.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "database_name": {
+            "type": "string",
+            "description": "The name of the database."
+          },
+          "container_name": {
+            "type": "string",
+            "description": "The name of the container to query."
+          },
+          "query": {
+            "type": "string",
+            "description": "The SQL query to execute (e.g., 'SELECT * FROM c WHERE c.category = \"electronics\"')."
+          }
+        },
+        "required": ["database_name", "container_name", "query"]
+      }
+    },
+    {
+      "name": "get_item",
+      "description": "Retrieve a single item from a CosmosDB container by its ID and partition key.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "database_name": {
+            "type": "string",
+            "description": "The name of the database."
+          },
+          "container_name": {
+            "type": "string",
+            "description": "The name of the container."
+          },
+          "item_id": {
+            "type": "string",
+            "description": "The ID of the item to retrieve."
+          },
+          "partition_key": {
+            "type": "string",
+            "description": "The partition key value for the item."
+          }
+        },
+        "required": ["database_name", "container_name", "item_id", "partition_key"]
+      }
+    },
+    {
+      "name": "update_item",
+      "description": "Update or insert an item in a CosmosDB container. Use this to update an existing item or create a new one. If an item with the same ID exists, it will be replaced with the new data; otherwise, a new item will be created.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "database_name": {
+            "type": "string",
+            "description": "The name of the database."
+          },
+          "container_name": {
+            "type": "string",
+            "description": "The name of the container."
+          },
+          "item": {
+            "type": "string",
+            "description": "The JSON string representing the item to upsert (insert or update)."
+          }
+        },
+        "required": ["database_name", "container_name", "item"]
+      }
+    },
+    {
+      "name": "delete_item",
+      "description": "Delete an item from a CosmosDB container by its ID and partition key.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "database_name": {
+            "type": "string",
+            "description": "The name of the database."
+          },
+          "container_name": {
+            "type": "string",
+            "description": "The name of the container."
+          },
+          "item_id": {
+            "type": "string",
+            "description": "The ID of the item to delete."
+          },
+          "partition_key": {
+            "type": "string",
+            "description": "The partition key value for the item."
+          }
+        },
+        "required": ["database_name", "container_name", "item_id", "partition_key"]
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "RemoteMCPServer",
+      "spec": {
+        "url": "https://func-api-wui55ylijmvlo.azurewebsites.net/runtime/webhooks/mcp/sse"
+      },
+      "auth": {
+        "type": "None"
+      },
+      "run_for_functions": [
+        "list_databases",
+        "list_containers",
+        "query_items",
+        "get_item",
+        "update_item",
+        "delete_item"
+      ]
+    }
+  ]
+}

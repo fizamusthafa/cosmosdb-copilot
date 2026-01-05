@@ -1,0 +1,8 @@
+name: cosmosdb-mcp-server
+metadata:
+  template: azd-init@1.11.0
+services:
+  api:
+    project: ./src
+    language: python
+    host: function

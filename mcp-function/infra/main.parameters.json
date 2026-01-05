@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://azure.github.io/azure-dev/schemas/v1.0/azure.yaml.json",
+  "parameters": {
+    "cosmosEndpoint": {
+      "value": "${COSMOS_ENDPOINT}"
+    },
+    "cosmosKey": {
+      "value": "${COSMOS_KEY}"
+    }
+  }
+}

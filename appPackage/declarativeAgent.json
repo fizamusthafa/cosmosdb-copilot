@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
+    "version": "v1.5",
+    "name": "CosmosDB Copilot",
+    "description": "An AI assistant that helps you query and manage your Azure CosmosDB databases using natural language.",
+    "instructions": "$[file('instruction.txt')]",
+    "conversation_starters": [
+        {
+            "title": "List my databases",
+            "text": "What databases do I have in my CosmosDB account?"
+        },
+        {
+            "title": "Show containers",
+            "text": "List all containers in the SampleDB database"
+        },
+        {
+            "title": "Query products",
+            "text": "Show me all products in the Products container"
+        },
+        {
+            "title": "Search by category",
+            "text": "Find all items in Products where category is 'electronics'"
+        }
+    ],
+    "actions": [
+        {
+            "id": "cosmosdb_action",
+            "file": "ai-plugin.json"
+        }
+    ]
+}

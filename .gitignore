@@ -1,0 +1,36 @@
+# TeamsFx files
+env/.env.*.user
+env/.env.local
+.localConfigs
+appPackage/build
+
+# Environment files with secrets
+env/.env.dev
+
+# Azure Developer CLI (azd) files with secrets
+mcp-function/.azure/
+
+# dependencies
+node_modules/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# misc
+.env
+*.env
+.deployment
+.DS_Store
+
+# Local settings with secrets
+**/local.settings.json
+
+# generated files
+appPackage/.generated
+
+# IDE
+.idea/
+.vscode/*.log
