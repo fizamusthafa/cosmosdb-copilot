@@ -1,6 +1,6 @@
-# Declarative Agent + MCP in VS Code 
+# Declarative Agent + (Cosmos DB) MCP in VS Code 
 
-This template shows how to wrap your existing MCP Server into a Microsoft 365 Copilot Declarative Agent (DA) using the Agents Toolkit (ATK) in VS Code. Instead of hand‑authoring an OpenAPI spec, you point ATK at your MCP discovery URL and let the toolkit generate all manifests, wiring in authentication and function definitions automatically. 
+This template shows how to wrap your existing MCP Server into a Microsoft 365 Copilot Declarative Agent (DA) using the Agents Toolkit (ATK) in VS Code. Instead of hand‑authoring an OpenAPI spec, you point ATK at your MCP discovery URL and let the toolkit generate all manifests, wiring in authentication and function definitions automatically. The code also contains an example for an MCP server to Cosmos DB.
 
 ## Get started with the template
 
@@ -10,7 +10,7 @@ This template shows how to wrap your existing MCP Server into a Microsoft 365 
 >
 > - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 > - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
-> - [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+> - [Microsoft 365 Agents Toolkit VS Code Extension](https://aka.ms/teams-toolkit) version 6.0 or higher, or [Microsoft 365 Agents Toolkit CLI](https://www.npmjs.com/package/@microsoft/m365agentstoolkit-cli)
 > - [Microsoft 365 Copilot license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
 
 1. Open ATK in VS Code
@@ -23,15 +23,21 @@ This template shows how to wrap your existing MCP Server into a Microsoft 365 
 
 3. Scaffold a new DA
 
-    In the Agents Toolkit menu, click 'Create new Agent/app', select 'Declarative Agent', choose a folder and name (e.g. my-mcp-agent).
+    In the Agents Toolkit menu, click 'Create new Agent', select 'Declarative Agent', choose a folder and name (e.g. my-mcp-agent).
+    ![Overview](images/Screenshot%202026-01-06%20192133.png)
 
 4. Add your MCP Server
 
-    In the ATK sidebar click Add Action → Start with an MCP server, then enter your MCP discovery URL (e.g. https://mcp.contoso.com/discover).
+    In the ATK sidebar click Add Action → Start with an MCP server, then enter your MCP discovery URL (e.g. https://your-server/mcp).
+    ![Action](images/Screenshot%202026-01-06%20192246.png)
+
+    ![Start MCP Server](images/Screenshot%202026-01-06%20192302.png)
 
 5. Start your MCP Server 
 
     After the DA project generated, click the "Start" button in the mcp.json file to start your MCP server, when prompt, enter the user ID and password for authentication.
+
+
 
 6. Fetch and select tools 
 
@@ -55,6 +61,8 @@ This template shows how to wrap your existing MCP Server into a Microsoft 365 
 
     Open the Copilot pane, select your agent and invoke any of the MCP tools with natural‑language prompts. 
 
+    
+
 ## Project Structure
 
 | Folder       | Description                                                                                 |
@@ -63,6 +71,7 @@ This template shows how to wrap your existing MCP Server into a Microsoft 365 
 | `appPackage` | - `appPackage/ai-plugin.json` (function definitions, runtime spec + auth) - This file defines the the action or operations that Copilot can interact with<br>- `appPackage/declarativeAgent.json` (agent configuration & sample prompts) - This file is the definition of your declarative agent<br>- `appPackage/manifest.json` (Teams/Outlook integration)   |
 | `env`        | Local environment files (.env.development, .env.local)                                                                         |
 | `m365agents.yml` | Defines your DA stages & lifecycle for ATK  |
+| `mcp-function/` | *(Optional)* Example Cosmos DB MCP server implementation - For full details, see the [mcp-function/README.md](mcp-function/README.md).  |
 
 ## MCP‑specific tips
 
@@ -78,11 +87,21 @@ This template shows how to wrap your existing MCP Server into a Microsoft 365 
 
 ## Learn More
 
-- [Build Declarative Agents (official docs)](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents)
+- [Microsoft 365 Copilot Extensibility Overview](https://learn.microsoft.com/microsoft-365-copilot/extensibility/)
+
+- [Build Declarative Agents with Agents Toolkit](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents)
+
+- [Declarative Agents Overview](https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-declarative-agent)
+
+- [Microsoft 365 Agents Toolkit](https://learn.microsoft.com/microsoft-365/developer/overview-m365-agents-toolkit)
+
+- [Add Plugins to Declarative Agents](https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-api-plugins)
 
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 
-- [Agents Toolkit guide on GitHub](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview)
+- [MCP Architecture & Concepts](https://modelcontextprotocol.io/docs/learn/architecture)
+
+- [Build Your First Declarative Agent - Training Module](https://learn.microsoft.com/training/modules/copilot-declarative-agents-build-your-first/)
 
 Happy building! 
 
